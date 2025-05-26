@@ -571,6 +571,9 @@ body {
     
     .progress-container {
         width: 90%;
+        bottom: 2%;
+        left: 5%;
+        transform: none;
     }
     
     .useless-progress {
