@@ -55,9 +55,10 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
-    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3)) 
-            drop-shadow(0 0 40px rgba(255, 255, 255, 0.2)) 
-            drop-shadow(0 0 60px rgba(255, 255, 255, 0.1));
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.8)) 
+            drop-shadow(0 0 60px rgba(255, 255, 255, 0.6)) 
+            drop-shadow(0 0 90px rgba(255, 255, 255, 0.4))
+            drop-shadow(0 0 120px rgba(255, 255, 255, 0.2));
     opacity: 0.9;
 }
 
@@ -163,21 +164,9 @@ body {
     50% { opacity: 0.5; }
 }
 
-/* Breathing circle */
+/* Breathing circle (hidden) */
 .breath-circle {
-    position: absolute;
-    top: 10%;
-    right: 20%;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: rgba(128, 255, 0, 0.5);
-    animation: breathe 3s ease-in-out infinite;
-    cursor: pointer;
-}
-
-.breath-circle:hover {
-    animation-duration: 0.5s;
+    display: none;
 }
 
 @keyframes breathe {
