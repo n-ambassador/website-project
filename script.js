@@ -209,24 +209,11 @@ function initializeColorBlobs() {
             `
         },
         about: {
-            title: 'Santa Sunrise',
+            title: 'Humans',
             content: `
-                <h2>Santa Sunrise</h2>
-                <div style="text-align: center; margin: 1.5rem 0;">
-                    <img src="./images/SSLogo_big.png" alt="Santa Sunrise Logo" style="max-width: 200px; width: 100%;">
+                <div style="text-align: center; margin: 2rem 0;">
+                    <img src="./images/HP_withHumen.png" alt="Humans" style="max-width: 400px; width: 100%; border-radius: 10px;">
                 </div>
-                <div style="text-align: center; margin: 1.5rem 0;">
-                    <img src="./images/HP_withHumen.png" alt="Humans" style="max-width: 300px; width: 100%; border-radius: 10px;">
-                </div>
-                <div class="quote">
-                    "A creative collective challenging conventions and lighting invention fires."
-                </div>
-                <h3>私たちについて</h3>
-                <p>Santa Sunriseは、慣習に挑戦し、発明の火を灯すクリエイティブな集団です。</p>
-                <p>透明な炎である<span class="highlight">"madness juice"</span>を通じて、世界に新しい価値を提供します。</p>
-                <h3>私たちの使命</h3>
-                <p>美しさは単純に存在することの中にあるという信念のもと、意味をなさないことの美しさを追求しています。</p>
-                <p>私たちは<span class="highlight">ただ振動する</span>ことで、世界に響きを与え続けています。</p>
             `
         }
     };

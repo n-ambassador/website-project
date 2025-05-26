@@ -48,6 +48,25 @@ body {
     50% { transform: translateY(-20px); }
 }
 
+/* Center logo */
+.center-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3)) 
+            drop-shadow(0 0 40px rgba(255, 255, 255, 0.2)) 
+            drop-shadow(0 0 60px rgba(255, 255, 255, 0.1));
+    opacity: 0.9;
+}
+
+.center-logo img {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+}
+
 /* Interactive squares */
 .square-container {
     position: absolute;
