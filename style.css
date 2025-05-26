@@ -90,10 +90,90 @@ footer {
     margin-top: 2rem;
 }
 
+/* Profile section styles */
+.profile-content h3 {
+    color: #764ba2;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.profile-content ul {
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.profile-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* Research grid */
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.research-item {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.research-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.research-item h3 {
+    color: #667eea;
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+}
+
+/* Achievements section */
+.achievements-content h3 {
+    color: #764ba2;
+    margin: 1.5rem 0 1rem 0;
+    font-size: 1.3rem;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 0.5rem;
+}
+
+.achievements-content ul {
+    margin-left: 1.5rem;
+}
+
+.achievements-content li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+
+/* Contact section */
+.contact-content h3 {
+    color: #764ba2;
+    margin: 1.5rem 0 1rem 0;
+    font-size: 1.3rem;
+}
+
+.contact-content a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.contact-content a:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     header h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
     nav ul {
@@ -102,11 +182,20 @@ footer {
     }
     
     main {
-        margin-top: 180px;
+        margin-top: 200px;
         padding: 1rem;
     }
     
     section {
         padding: 1.5rem;
+    }
+    
+    .research-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .research-item {
+        padding: 1rem;
     }
 }
