@@ -3,225 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS - Digital Innovation</title>
+    <title>∅</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
+    <div class="void">
+        <!-- Floating orbs -->
+        <div class="orb" id="orb1"></div>
+        <div class="orb" id="orb2"></div>
+        <div class="orb" id="orb3"></div>
+        <div class="orb" id="orb4"></div>
+        <div class="orb" id="orb5"></div>
+        
+        <!-- Interactive squares -->
+        <div class="square-container">
+            <div class="square" data-sound="1"></div>
+            <div class="square" data-sound="2"></div>
+            <div class="square" data-sound="3"></div>
+            <div class="square" data-sound="4"></div>
+            <div class="square" data-sound="5"></div>
+            <div class="square" data-sound="6"></div>
+            <div class="square" data-sound="7"></div>
+            <div class="square" data-sound="8"></div>
+            <div class="square" data-sound="9"></div>
+        </div>
+        
+        <!-- Ripple zone -->
+        <div class="ripple-zone" id="rippleZone"></div>
+        
+        <!-- Color mixer -->
+        <div class="color-mixer">
+            <div class="color-blob" data-color="#ff0080"></div>
+            <div class="color-blob" data-color="#0080ff"></div>
+            <div class="color-blob" data-color="#80ff00"></div>
+            <div class="color-blob" data-color="#ff8000"></div>
+            <div class="color-blob" data-color="#8000ff"></div>
+        </div>
+        
+        <!-- Breathing circle -->
+        <div class="breath-circle"></div>
+        
+        <!-- Gravity balls -->
+        <div class="gravity-container">
+            <div class="gravity-ball" id="ball1"></div>
+            <div class="gravity-ball" id="ball2"></div>
+            <div class="gravity-ball" id="ball3"></div>
+            <div class="gravity-ball" id="ball4"></div>
+        </div>
+        
+        <!-- Noise generator -->
+        <div class="noise-grid">
+            <div class="noise-pixel"></div>
+            <div class="noise-pixel"></div>
+            <div class="noise-pixel"></div>
+            <div class="noise-pixel"></div>
+            <div class="noise-pixel"></div>
+            <div class="noise-pixel"></div>
+            <div class="noise-pixel"></div>
+            <div class="noise-pixel"></div>
+            <div class="noise-pixel"></div>
+            <div class="noise-pixel"></div>
+            <div class="noise-pixel"></div>
+            <div class="noise-pixel"></div>
+            <div class="noise-pixel"></div>
+            <div class="noise-pixel"></div>
+            <div class="noise-pixel"></div>
+            <div class="noise-pixel"></div>
+        </div>
+        
+        <!-- Random text generator -->
+        <div class="text-chaos" id="textChaos"></div>
+        
+        <!-- Particle trail -->
+        <canvas id="trailCanvas"></canvas>
+        
+        <!-- Morphing shape -->
+        <div class="morphing-shape"></div>
+        
+        <!-- Click counter (purposeless) -->
+        <div class="click-counter" id="clickCounter">0</div>
+        
+        <!-- Spinning elements -->
+        <div class="spinner-group">
+            <div class="spinner" data-speed="1"></div>
+            <div class="spinner" data-speed="2.5"></div>
+            <div class="spinner" data-speed="0.8"></div>
+            <div class="spinner" data-speed="3.2"></div>
+        </div>
+        
+        <!-- Bouncing DVD logo style -->
+        <div class="bouncer" id="bouncer">•</div>
+        
+        <!-- Matrix rain -->
+        <canvas id="matrixCanvas"></canvas>
+        
+        <!-- Useless progress bars -->
+        <div class="progress-container">
+            <div class="useless-progress" data-id="1">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="useless-progress" data-id="2">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="useless-progress" data-id="3">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+        
+        <!-- Secret buttons -->
+        <button class="secret-btn" style="top: 10%; left: 5%;">?</button>
+        <button class="secret-btn" style="top: 80%; right: 10%;">!</button>
+        <button class="secret-btn" style="bottom: 20%; left: 30%;">∞</button>
+        <button class="secret-btn" style="top: 40%; right: 25%;">※</button>
+        
+        <!-- Floating numbers -->
+        <div class="number-rain"></div>
+        
+        <!-- Invisible maze -->
+        <div class="invisible-maze" id="maze"></div>
+    </div>
     
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">NEXUS</span>
-                <span class="logo-dot"></span>
-            </div>
-            <div class="nav-links">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-bg"></div>
-        <div class="particles"></div>
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    <span class="title-line">CRAFTING</span>
-                    <span class="title-line">DIGITAL</span>
-                    <span class="title-line highlight">EXPERIENCES</span>
-                </h1>
-                <p class="hero-subtitle">
-                    We create immersive digital worlds that blur the line between imagination and reality.
-                </p>
-                <div class="hero-buttons">
-                    <button class="btn-primary">Explore Projects</button>
-                    <button class="btn-secondary">Watch Reel</button>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="floating-shapes">
-                    <div class="shape shape-1"></div>
-                    <div class="shape shape-2"></div>
-                    <div class="shape shape-3"></div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-line"></div>
-            <span>Scroll</span>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">01</span>
-                <h2 class="section-title">About Us</h2>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>We are digital architects</h3>
-                    <p>Building the future of web experiences through cutting-edge technology and creative vision. Our team combines artistic sensibility with technical expertise to deliver extraordinary digital solutions.</p>
-                    <div class="stats">
-                        <div class="stat">
-                            <span class="stat-number">150+</span>
-                            <span class="stat-label">Projects</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">50+</span>
-                            <span class="stat-label">Clients</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">5+</span>
-                            <span class="stat-label">Years</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-visual">
-                    <div class="tech-grid">
-                        <div class="tech-item" data-tech="react">
-                            <div class="tech-icon">⚛️</div>
-                            <div class="tech-name">React</div>
-                        </div>
-                        <div class="tech-item" data-tech="threejs">
-                            <div class="tech-icon">🎮</div>
-                            <div class="tech-name">Three.js</div>
-                        </div>
-                        <div class="tech-item" data-tech="webgl">
-                            <div class="tech-icon">🌟</div>
-                            <div class="tech-name">WebGL</div>
-                        </div>
-                        <div class="tech-item" data-tech="nodejs">
-                            <div class="tech-icon">🚀</div>
-                            <div class="tech-name">Node.js</div>
-                        </div>
-                        <div class="tech-item" data-tech="typescript">
-                            <div class="tech-icon">📘</div>
-                            <div class="tech-name">TypeScript</div>
-                        </div>
-                        <div class="tech-item" data-tech="nextjs">
-                            <div class="tech-icon">⚡</div>
-                            <div class="tech-name">Next.js</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">02</span>
-                <h2 class="section-title">Featured Projects</h2>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card" data-project="1">
-                    <div class="project-image">
-                        <div class="project-overlay"></div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Neural Network</h3>
-                        <p>Interactive AI visualization</p>
-                        <span class="project-year">2024</span>
-                    </div>
-                </div>
-                <div class="project-card" data-project="2">
-                    <div class="project-image">
-                        <div class="project-overlay"></div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Quantum Portal</h3>
-                        <p>Immersive 3D experience</p>
-                        <span class="project-year">2024</span>
-                    </div>
-                </div>
-                <div class="project-card" data-project="3">
-                    <div class="project-image">
-                        <div class="project-overlay"></div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Digital Cosmos</h3>
-                        <p>Virtual reality platform</p>
-                        <span class="project-year">2023</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-content">
-                <div class="contact-text">
-                    <h2>Let's create something extraordinary together</h2>
-                    <p>Ready to push the boundaries of digital innovation? Get in touch and let's build the future.</p>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <span class="contact-label">Email</span>
-                            <span class="contact-value">hello@nexus.dev</span>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-label">Phone</span>
-                            <span class="contact-value">+81 3 1234 5678</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <span class="logo-text">NEXUS</span>
-                    <span class="logo-dot"></span>
-                </div>
-                <div class="footer-links">
-                    <a href="#" class="footer-link">Twitter</a>
-                    <a href="#" class="footer-link">Instagram</a>
-                    <a href="#" class="footer-link">LinkedIn</a>
-                    <a href="#" class="footer-link">GitHub</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 NEXUS. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
