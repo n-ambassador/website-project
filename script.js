@@ -75,155 +75,158 @@ function initializeTrailCanvas() {
     animateTrails();
 }
 
-// Youth text matrix rain effect
+// Youth text matrix rain effect - Fixed version
 function initializeMatrixCanvas() {
     const canvas = document.getElementById('matrixCanvas');
+    if (!canvas) return;
+    
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     
-    // Long youth-themed stories
-    const youthStories = [
-        '青春って何だろうねと君に聞いたあの日の放課後、桜が散っていく中で僕らは笑っていた。君の笑顔が一番好きだと言えなくて、夕日が綺麗だったねとしか言えない自分が情けなくて、でもそれでも君といる時間が宝物だった。',
-        '図書館で出会った運命なんて信じていなかったけれど、君が読んでいた文庫本のタイトルを見た瞬間、心臓が止まりそうになった。初恋の味は甘酸っぱいというけれど、こんなにも胸が苦しいものなのか。',
-        '部活の仲間たちと過ごした夏の日々、汗まみれになりながらも笑顔だった君の姿が今でも目に焼き付いている。体育祭での応援合戦、文化祭のクラス展示、合唱コンクールの練習、全てが特別な思い出になった。',
-        '放課後の教室で君を待っている時間が一番好きだった。夕日が差し込む窓際の席で、君の横顔を見ているだけで幸せだった。手紙を書こうと思ったけれど、君への気持ちを言葉にできない自分がもどかしくて。',
-        '屋上から見た景色と君の笑い声、夏祭りの花火と浴衣姿の君、修学旅行の夜に話した将来の夢、卒業式の日に流した涙、全てが青春という名の奇跡だった。友達以上恋人未満のもどかしい関係が続いて。',
-        '雨の日のバス停で傘を差し出してくれた君の優しさに、恋をした瞬間を今でも覚えている。君と歩いた通学路、一緒に立ち寄ったコンビニ、自転車を並べて走った帰り道、全てが特別な意味を持っていた。',
-        '音楽室で君のピアノを聴いていた時間、美術室での創作活動、化学実験での失敗、数学の問題より君の方が難しくて解けなかった。英語の授業中も君のことばかり考えて、先生に当てられて答えられなかった。',
-        '保健室で過ごした時間、図書委員として働く君の真面目な姿、窓際の席から見える景色よりも君の方が美しくて、授業に集中できない日々が続いた。君との会話が楽しすぎて、休み時間の短さが恨めしかった。',
-        '学園祭の準備で夜更かしした日々、クラスメイトとの何気ない会話、部室での秘密の話、放課後の特別な時間、夏休みの宿題よりも君への想いの方が複雑で解けなかった。制服を着た最後の日に思ったこと。',
-        '青空と白い雲を見上げながら君のことを考えていた。君がいた教室、君がいた季節、君との青春ストーリーが今でも心の中で続いている。あの時の気持ちのまま、時が止まっていればよかったのに。'
-    ];
+    // Comprehensive youth novel text
+    const youthText = '青春って何だろうねと君に聞いたあの日の放課後桜が散っていく中で僕らは笑っていた君の笑顔が一番好きだと言えなくて夕日が綺麗だったねとしか言えない自分が情けなくてでもそれでも君といる時間が宝物だった図書館で出会った運命なんて信じていなかったけれど君が読んでいた文庫本のタイトルを見た瞬間心臓が止まりそうになった初恋の味は甘酸っぱいというけれどこんなにも胸が苦しいものなのか部活の仲間たちと過ごした夏の日々汗まみれになりながらも笑顔だった君の姿が今でも目に焼き付いている体育祭での応援合戦文化祭のクラス展示合唱コンクールの練習全てが特別な思い出になった放課後の教室で君を待っている時間が一番好きだった夕日が差し込む窓際の席で君の横顔を見ているだけで幸せだった手紙を書こうと思ったけれど君への気持ちを言葉にできない自分がもどかしくて屋上から見た景色と君の笑い声夏祭りの花火と浴衣姿の君修学旅行の夜に話した将来の夢卒業式の日に流した涙全てが青春という名の奇跡だった友達以上恋人未満のもどかしい関係が続いて雨の日のバス停で傘を差し出してくれた君の優しさに恋をした瞬間を今でも覚えている君と歩いた通学路一緒に立ち寄ったコンビニ自転車を並べて走った帰り道全てが特別な意味を持っていた音楽室で君のピアノを聴いていた時間美術室での創作活動化学実験での失敗数学の問題より君の方が難しくて解けなかった英語の授業中も君のことばかり考えて先生に当てられて答えられなかった保健室で過ごした時間図書委員として働く君の真面目な姿窓際の席から見える景色よりも君の方が美しくて授業に集中できない日々が続いた君との会話が楽しすぎて休み時間の短さが恨めしかった学園祭の準備で夜更かしした日々クラスメイトとの何気ない会話部室での秘密の話放課後の特別な時間夏休みの宿題よりも君への想いの方が複雑で解けなかった制服を着た最後の日に思ったこと青空と白い雲を見上げながら君のことを考えていた君がいた教室君がいた季節君との青春ストーリーが今でも心の中で続いているあの時の気持ちのまま時が止まっていればよかったのに';
     
-    const fontSize = 12;
-    const columnWidth = 20;
-    const columns = Math.floor(canvas.width / columnWidth);
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
     const drops = [];
     
-    // Initialize drops with random stories and positions
-    for (let i = 0; i < columns; i++) {
-        drops[i] = {
-            y: Math.random() * canvas.height,
-            story: youthStories[Math.floor(Math.random() * youthStories.length)],
-            charIndex: Math.floor(Math.random() * 200),
-            speed: 0.5 + Math.random() * 1
+    // Initialize drops
+    for (let x = 0; x < columns; x++) {
+        drops[x] = {
+            y: 1,
+            charIndex: Math.floor(Math.random() * youthText.length)
         };
     }
     
-    function drawYouthMatrix() {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.03)';
+    function draw() {
+        // Black background with slight transparency
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
-        ctx.fillStyle = '#4CAF50';
-        ctx.font = fontSize + 'px "Hiragino Sans", "Yu Gothic", monospace';
+        ctx.fillStyle = '#0F0'; // Matrix green
+        ctx.font = fontSize + 'px "Yu Gothic", "Hiragino Sans", monospace';
         
+        // Draw characters
         for (let i = 0; i < drops.length; i++) {
             const drop = drops[i];
             
-            // Get character from story
-            const char = drop.story[drop.charIndex % drop.story.length] || '　';
+            // Get current character
+            const char = youthText[drop.charIndex % youthText.length];
             
-            // Set opacity based on position
-            const opacity = Math.max(0.3, 1 - (drop.y / canvas.height) * 0.7);
-            ctx.fillStyle = `rgba(76, 175, 80, ${opacity})`;
+            // Draw character
+            ctx.fillText(char, i * fontSize, drop.y * fontSize);
             
-            ctx.fillText(char, i * columnWidth, drop.y);
-            
-            // Move drop down
-            drop.y += drop.speed;
-            drop.charIndex++;
-            
-            // Reset drop when it goes off screen
-            if (drop.y > canvas.height + 50) {
-                drop.y = -50;
-                drop.story = youthStories[Math.floor(Math.random() * youthStories.length)];
-                drop.charIndex = Math.floor(Math.random() * 50);
-                drop.speed = 0.5 + Math.random() * 1;
+            // Reset drop randomly or when it reaches bottom
+            if (drop.y * fontSize > canvas.height && Math.random() > 0.975) {
+                drop.y = 0;
+                drop.charIndex = Math.floor(Math.random() * youthText.length);
             }
+            
+            // Move drop down and advance character
+            drop.y++;
+            drop.charIndex++;
         }
     }
     
-    setInterval(drawYouthMatrix, 50);
+    setInterval(draw, 33);
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
 }
 
-// Color blobs with Santa Sunrise info
+// Color blobs with actual Santa Sunrise content
 function initializeColorBlobs() {
     const santaInfo = {
         vision: {
-            title: 'Vision・ビジョン',
+            title: 'Our Vision',
             content: `
-                <h2>Metaverse into washing machine</h2>
-                <div class="quote">
-                    "メタバースを洗濯機に込めて"
+                <h2>Metaverse into washing machine.</h2>
+                <div style="text-align: center; margin: 1.5rem 0;">
+                    <img src="./images/washingmachine.png" alt="Washing Machine" style="max-width: 300px; width: 100%; border-radius: 10px;">
                 </div>
-                <p>Santa Sunriseの革新的なビジョンは、デジタル世界と日常生活の境界を曖昧にし、新しい体験の可能性を探求することです。</p>
-                <p>洗濯機という日常的なアイテムに、無限の可能性を秘めたメタバースの概念を融合させる発想は、常識を覆す創造性の表れです。</p>
-                <h3>未来への展望</h3>
-                <p>私たちは、テクノロジーと詩的な表現を組み合わせることで、これまでにない体験を創造します。</p>
+                <div class="quote">
+                    High school summer. I had too much time to think about the meaning of life, youth, and love. There was a sadness to me then. I wonder if there is any sadness to me now? I can't help but think that life is simply continuing to wash away, just like the laundry in this machine.
+                </div>
+                <div style="text-align: center; margin: 1.5rem 0;">
+                    <img src="./images/evolution.png" alt="Evolution" style="max-width: 300px; width: 100%; border-radius: 10px;">
+                </div>
+                <p>私たちのビジョンは、高校時代の夏に感じた人生の意味への問いかけから始まります。生命、青春、そして愛について考えすぎてしまう時間がありました。</p>
+                <p>洗濯機の中で洗い流されていく衣服のように、人生もまた続いていくものなのでしょうか。</p>
             `
         },
         concept: {
-            title: 'Concept・コンセプト',
+            title: 'Who we are',
             content: `
                 <h2>A Skeptical Light Bulb</h2>
-                <div class="quote">
-                    "懐疑的な電球として"
+                <div style="text-align: center; margin: 1.5rem 0;">
+                    <img src="./images/sunflowerinblu.png" alt="Sunflower in Blue" style="max-width: 300px; width: 100%; border-radius: 10px;">
                 </div>
-                <p>Santa Sunriseは自らを<span class="highlight">"A Skeptical Light Bulb"</span>と定義しています。</p>
-                <p>これは、常識に疑問を投げかけながらも、新しい光を世界にもたらすという意志の表れです。</p>
-                <h3>透明な炎</h3>
-                <p>私たちが生み出す「透明な炎」は、見えないけれど確実に存在する情熱と創造力を象徴しています。</p>
-                <p>それは<span class="highlight">"crazy juice"</span>と呼ばれる、狂気的なまでの創造性の源泉なのです。</p>
+                <div class="quote">
+                    We are a skeptical light bulb. We glow, when we flip the switch of convention. It lights an invention fire. And we call this transparent flame "madness juice".
+                </div>
+                <div style="text-align: center; margin: 1.5rem 0;">
+                    <img src="./images/evolution_animal_robot.png" alt="Animal Robot Evolution" style="max-width: 300px; width: 100%; border-radius: 10px;">
+                </div>
+                <p>私たちは<span class="highlight">懐疑的な電球</span>です。慣習のスイッチを切り替えるとき、私たちは光ります。</p>
+                <p>それは発明の火を灯し、私たちはこの透明な炎を<span class="highlight">"madness juice"</span>と呼んでいます。</p>
             `
         },
         philosophy: {
-            title: 'Philosophy・哲学',
+            title: 'What we do',
             content: `
-                <h2>Beyond Conventional Thinking</h2>
-                <div class="quote">
-                    "従来の思考を超えて"
+                <h2>Love Bombarda</h2>
+                <div style="text-align: center; margin: 1.5rem 0;">
+                    <img src="./images/inthespace.png" alt="In Space" style="max-width: 300px; width: 100%; border-radius: 10px;">
                 </div>
-                <p>Santa Sunriseの哲学は、既成概念にとらわれない<span class="highlight">非従来型</span>のアプローチにあります。</p>
-                <h3>創造性の探求</h3>
-                <p>私たちは、創造性と批判的思考を融合させ、新しい価値観を生み出すことを使命としています。</p>
-                <p>メタファーを多用する表現方法は、言葉の限界を超えた理解を促進します。</p>
-                <h3>革新への挑戦</h3>
-                <p>常に既存の枠組みに疑問を投げかけ、革新的なソリューションを追求し続けます。</p>
+                <div class="quote">
+                    Beauty is in simply being. We think there's beauty in simply doing something that doesn't make sense. So we're just vibrating.
+                </div>
+                <div style="text-align: center; margin: 1.5rem 0;">
+                    <img src="./images/love_fire_worls.png" alt="Love Fire Worlds" style="max-width: 300px; width: 100%; border-radius: 10px;">
+                </div>
+                <p>美しさは、ただ存在することの中にあります。意味をなさないことをすることにも美しさがあると私たちは考えています。</p>
+                <p>だから私たちは<span class="highlight">ただ振動している</span>のです。</p>
             `
         },
         values: {
-            title: 'Values・価値観',
+            title: 'Night Speaker',
             content: `
-                <h2>Core Values</h2>
-                <div class="quote">
-                    "静寂、存在感、内面の美しさを大切に"
+                <h2>The Beauty of Existence</h2>
+                <div style="text-align: center; margin: 1.5rem 0;">
+                    <img src="./images/nightspeaker.png" alt="Night Speaker" style="max-width: 300px; width: 100%; border-radius: 10px;">
                 </div>
-                <h3>静寂の力</h3>
-                <p><span class="highlight">静寂</span>は、私たちにとって創造性の源泉です。騒音の中では生まれない深い洞察が、静けさの中で育まれます。</p>
-                <h3>存在感</h3>
-                <p>私たちは、物理的な大きさではなく、<span class="highlight">存在感</span>の強さで価値を測ります。</p>
-                <h3>内面の美しさ</h3>
-                <p>表面的な美しさよりも、<span class="highlight">内面の美しさ</span>こそが真の価値を持つと信じています。</p>
-                <p>それは、見る人の心に深く響く、本質的な美しさなのです。</p>
+                <div class="quote">
+                    "Beauty is in simply being."
+                </div>
+                <p>私たちの価値観は、シンプルな存在の中に美を見出すことです。</p>
+                <p>意味を持たないことにも美しさがあり、そこに私たちの真の価値が宿っています。</p>
+                <h3>ただ振動すること</h3>
+                <p>私たちは意味を求めず、<span class="highlight">ただ振動する</span>ことで世界に響きを与えています。</p>
             `
         },
         about: {
-            title: 'About・会社概要',
+            title: 'Santa Sunrise',
             content: `
                 <h2>Santa Sunrise</h2>
-                <div class="quote">
-                    "創造的で非従来型のクリエイティブ集団"
+                <div style="text-align: center; margin: 1.5rem 0;">
+                    <img src="./images/SSLogo_big.png" alt="Santa Sunrise Logo" style="max-width: 200px; width: 100%;">
                 </div>
-                <h3>設立</h3>
-                <p><span class="highlight">2023年設立</span>の新進気鋭のクリエイティブ集団です。</p>
-                <h3>事業内容</h3>
-                <p>私たちは、メタファーと創造性を駆使して、これまでにない体験とソリューションを提供します。</p>
-                <p>洗濯機、進化図、ロボット、宇宙など、多様なビジュアル要素を通じてストーリーを紡ぎます。</p>
-                <h3>チーム構成</h3>
-                <p>若々しく反抗的な精神を持つクリエイターたちが集結し、既成概念を覆す作品を生み出しています。</p>
-                <h3>未来への約束</h3>
-                <p>私たちは、<span class="highlight">変革と内省の物語</span>を通じて、世界に新しい価値を提供し続けます。</p>
+                <div style="text-align: center; margin: 1.5rem 0;">
+                    <img src="./images/HP_withHumen.png" alt="Humans" style="max-width: 300px; width: 100%; border-radius: 10px;">
+                </div>
+                <div class="quote">
+                    "A creative collective challenging conventions and lighting invention fires."
+                </div>
+                <h3>私たちについて</h3>
+                <p>Santa Sunriseは、慣習に挑戦し、発明の火を灯すクリエイティブな集団です。</p>
+                <p>透明な炎である<span class="highlight">"madness juice"</span>を通じて、世界に新しい価値を提供します。</p>
+                <h3>私たちの使命</h3>
+                <p>美しさは単純に存在することの中にあるという信念のもと、意味をなさないことの美しさを追求しています。</p>
+                <p>私たちは<span class="highlight">ただ振動する</span>ことで、世界に響きを与え続けています。</p>
             `
         }
     };
