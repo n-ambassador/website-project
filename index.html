@@ -31,13 +31,21 @@
         <!-- Ripple zone -->
         <div class="ripple-zone" id="rippleZone"></div>
         
-        <!-- Color mixer -->
+        <!-- Color mixer / Santa Sunrise Info -->
         <div class="color-mixer">
-            <div class="color-blob" data-color="#ff0080"></div>
-            <div class="color-blob" data-color="#0080ff"></div>
-            <div class="color-blob" data-color="#80ff00"></div>
-            <div class="color-blob" data-color="#ff8000"></div>
-            <div class="color-blob" data-color="#8000ff"></div>
+            <div class="color-blob" data-color="#ff0080" data-info="vision"></div>
+            <div class="color-blob" data-color="#0080ff" data-info="concept"></div>
+            <div class="color-blob" data-color="#80ff00" data-info="philosophy"></div>
+            <div class="color-blob" data-color="#ff8000" data-info="values"></div>
+            <div class="color-blob" data-color="#8000ff" data-info="about"></div>
+        </div>
+        
+        <!-- Santa Sunrise Info Modal -->
+        <div class="info-modal" id="infoModal">
+            <div class="info-content">
+                <div class="info-close">&times;</div>
+                <div class="info-body" id="infoBody"></div>
+            </div>
         </div>
         
         <!-- Breathing circle -->

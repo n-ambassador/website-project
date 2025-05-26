@@ -108,18 +108,132 @@ function initializeMatrixCanvas() {
     setInterval(drawMatrix, 50);
 }
 
-// Color blobs
+// Color blobs with Santa Sunrise info
 function initializeColorBlobs() {
+    const santaInfo = {
+        vision: {
+            title: 'Vision・ビジョン',
+            content: `
+                <h2>Metaverse into washing machine</h2>
+                <div class="quote">
+                    "メタバースを洗濯機に込めて"
+                </div>
+                <p>Santa Sunriseの革新的なビジョンは、デジタル世界と日常生活の境界を曖昧にし、新しい体験の可能性を探求することです。</p>
+                <p>洗濯機という日常的なアイテムに、無限の可能性を秘めたメタバースの概念を融合させる発想は、常識を覆す創造性の表れです。</p>
+                <h3>未来への展望</h3>
+                <p>私たちは、テクノロジーと詩的な表現を組み合わせることで、これまでにない体験を創造します。</p>
+            `
+        },
+        concept: {
+            title: 'Concept・コンセプト',
+            content: `
+                <h2>A Skeptical Light Bulb</h2>
+                <div class="quote">
+                    "懐疑的な電球として"
+                </div>
+                <p>Santa Sunriseは自らを<span class="highlight">"A Skeptical Light Bulb"</span>と定義しています。</p>
+                <p>これは、常識に疑問を投げかけながらも、新しい光を世界にもたらすという意志の表れです。</p>
+                <h3>透明な炎</h3>
+                <p>私たちが生み出す「透明な炎」は、見えないけれど確実に存在する情熱と創造力を象徴しています。</p>
+                <p>それは<span class="highlight">"crazy juice"</span>と呼ばれる、狂気的なまでの創造性の源泉なのです。</p>
+            `
+        },
+        philosophy: {
+            title: 'Philosophy・哲学',
+            content: `
+                <h2>Beyond Conventional Thinking</h2>
+                <div class="quote">
+                    "従来の思考を超えて"
+                </div>
+                <p>Santa Sunriseの哲学は、既成概念にとらわれない<span class="highlight">非従来型</span>のアプローチにあります。</p>
+                <h3>創造性の探求</h3>
+                <p>私たちは、創造性と批判的思考を融合させ、新しい価値観を生み出すことを使命としています。</p>
+                <p>メタファーを多用する表現方法は、言葉の限界を超えた理解を促進します。</p>
+                <h3>革新への挑戦</h3>
+                <p>常に既存の枠組みに疑問を投げかけ、革新的なソリューションを追求し続けます。</p>
+            `
+        },
+        values: {
+            title: 'Values・価値観',
+            content: `
+                <h2>Core Values</h2>
+                <div class="quote">
+                    "静寂、存在感、内面の美しさを大切に"
+                </div>
+                <h3>静寂の力</h3>
+                <p><span class="highlight">静寂</span>は、私たちにとって創造性の源泉です。騒音の中では生まれない深い洞察が、静けさの中で育まれます。</p>
+                <h3>存在感</h3>
+                <p>私たちは、物理的な大きさではなく、<span class="highlight">存在感</span>の強さで価値を測ります。</p>
+                <h3>内面の美しさ</h3>
+                <p>表面的な美しさよりも、<span class="highlight">内面の美しさ</span>こそが真の価値を持つと信じています。</p>
+                <p>それは、見る人の心に深く響く、本質的な美しさなのです。</p>
+            `
+        },
+        about: {
+            title: 'About・会社概要',
+            content: `
+                <h2>Santa Sunrise</h2>
+                <div class="quote">
+                    "創造的で非従来型のクリエイティブ集団"
+                </div>
+                <h3>設立</h3>
+                <p><span class="highlight">2023年設立</span>の新進気鋭のクリエイティブ集団です。</p>
+                <h3>事業内容</h3>
+                <p>私たちは、メタファーと創造性を駆使して、これまでにない体験とソリューションを提供します。</p>
+                <p>洗濯機、進化図、ロボット、宇宙など、多様なビジュアル要素を通じてストーリーを紡ぎます。</p>
+                <h3>チーム構成</h3>
+                <p>若々しく反抗的な精神を持つクリエイターたちが集結し、既成概念を覆す作品を生み出しています。</p>
+                <h3>未来への約束</h3>
+                <p>私たちは、<span class="highlight">変革と内省の物語</span>を通じて、世界に新しい価値を提供し続けます。</p>
+            `
+        }
+    };
+
     document.querySelectorAll('.color-blob').forEach((blob, index) => {
         const color = blob.dataset.color;
+        const infoType = blob.dataset.info;
         blob.style.background = color;
         
         blob.addEventListener('click', () => {
+            // Show Santa Sunrise info
+            showSantaInfo(infoType, santaInfo[infoType]);
+            
+            // Background effect
             document.body.style.background = `radial-gradient(circle at center, ${color}22 0%, #000 100%)`;
             setTimeout(() => {
                 document.body.style.background = '#000';
             }, 2000);
         });
+    });
+}
+
+// Show Santa Sunrise info modal
+function showSantaInfo(type, info) {
+    const modal = document.getElementById('infoModal');
+    const body = document.getElementById('infoBody');
+    
+    body.innerHTML = info.content;
+    modal.classList.add('active');
+    
+    // Close modal functionality
+    const closeBtn = document.querySelector('.info-close');
+    const modalOverlay = modal;
+    
+    closeBtn.onclick = () => {
+        modal.classList.remove('active');
+    };
+    
+    modalOverlay.onclick = (e) => {
+        if (e.target === modalOverlay) {
+            modal.classList.remove('active');
+        }
+    };
+    
+    // ESC key to close
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+        }
     });
 }
 
@@ -281,23 +395,50 @@ function initializeSecretButtons() {
     });
 }
 
-// Number rain
+// Youth text rain
 function initializeNumberRain() {
-    const numberRain = document.querySelector('.number-rain');
+    const textRain = document.querySelector('.number-rain');
+    
+    const youthTexts = [
+        '青春って何だろうね', '君の笑顔が一番好きだ', '夕日が綺麗だった', '今日も平凡な一日が始まる',
+        '放課後の教室で君を待ってる', '桜が散っていく', '僕らの夏は終わらない', '星空を見上げて願いを込めた',
+        'あの日の約束を覚えてる？', '図書館で出会った運命', '雨の日のバス停で', '君と過ごした時間が宝物',
+        '青春の1ページ', '恋って不思議だね', '卒業まであと何日？', '文化祭での思い出',
+        '部活の仲間たちと', '初恋の味は甘酸っぱい', '屋上から見た景色', '夏祭りの花火と君',
+        '手紙を書こうと思ったけど', '君への気持ちを言葉にできない', '放課後の帰り道', '自転車を並べて走った',
+        'あの時の気持ちのまま', '青空と白い雲', '君がいた教室', '制服姿の君が好きだった',
+        '学園祭の準備で夜更かし', '体育祭でのドラマ', '修学旅行の夜', '卒業式の日に泣いた',
+        '君のことばかり考えてる', '恋愛小説みたいな展開', '友達以上恋人未満', '告白する勇気がない',
+        '青春時代の甘い思い出', '君と歩いた通学路', '窓際の席から見える景色', 'クラスメイトとの日々',
+        '部室での秘密の話', '君の横顔が美しすぎて', '放課後の特別な時間', '学校帰りのコンビニ',
+        '夏休みの宿題と恋心', '文庫本を読みながら', '君への想いは止まらない', '青春という名の奇跡',
+        '制服を着た最後の日', '君と見た夕焼け空', '思春期の複雑な気持ち', '恋する気持ちって何？',
+        '学生時代の淡い恋', 'あの日君は綺麗だった', '青春の1コマ', '君がいる風景',
+        '放課後の音楽室で', '図書委員の君が好き', '保健室で過ごした時間', '君と交換した手紙',
+        '学校行事での思い出', '運動会の応援合戦', '文化祭のクラス展示', '合唱コンクールの練習',
+        '君のピアノを聴いていた', '美術室での創作活動', '化学実験での失敗', '数学の問題より君が難しい',
+        '英語の授業中の妄想', '国語の時間に書いた詩', '歴史より君の過去が気になる', '地理より君の心を知りたい',
+        '体育の時間の君は輝いてた', '家庭科で作った料理', '技術の授業でのものづくり', '音楽室でのハーモニー',
+        '君との会話が楽しすぎて', '休み時間の短さが恨めしい', '授業中の居眠りと夢', '君が笑うと世界が明るくなる',
+        '青春の輝きを君と', '学生服に込めた想い', '教室の空気が変わる瞬間', '君がいた季節',
+        '放課後の部活動', '友情と恋の境界線', '純粋な気持ちのまま', '君との青春ストーリー'
+    ];
     
     setInterval(() => {
-        const number = document.createElement('div');
-        number.classList.add('falling-number');
-        number.textContent = Math.floor(Math.random() * 10);
-        number.style.left = Math.random() * 100 + '%';
-        number.style.animationDuration = (2 + Math.random() * 3) + 's';
+        const text = document.createElement('div');
+        text.classList.add('falling-number');
+        text.textContent = youthTexts[Math.floor(Math.random() * youthTexts.length)];
+        text.style.left = Math.random() * 100 + '%';
+        text.style.animationDuration = (6 + Math.random() * 4) + 's';
+        text.style.fontSize = (10 + Math.random() * 3) + 'px';
+        text.style.opacity = 0.1 + Math.random() * 0.2;
         
-        numberRain.appendChild(number);
+        textRain.appendChild(text);
         
         setTimeout(() => {
-            number.remove();
-        }, 5000);
-    }, 200);
+            text.remove();
+        }, 10000);
+    }, 800);
 }
 
 // Invisible maze
