@@ -75,37 +75,76 @@ function initializeTrailCanvas() {
     animateTrails();
 }
 
-// Matrix rain effect
+// Youth text matrix rain effect
 function initializeMatrixCanvas() {
     const canvas = document.getElementById('matrixCanvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     
-    const chars = '01010101∅∞※?!@#$%^&*()_+-=[]{}|;:,.<>?';
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const drops = Array(Math.floor(columns)).fill(1);
+    // Long youth-themed stories
+    const youthStories = [
+        '青春って何だろうねと君に聞いたあの日の放課後、桜が散っていく中で僕らは笑っていた。君の笑顔が一番好きだと言えなくて、夕日が綺麗だったねとしか言えない自分が情けなくて、でもそれでも君といる時間が宝物だった。',
+        '図書館で出会った運命なんて信じていなかったけれど、君が読んでいた文庫本のタイトルを見た瞬間、心臓が止まりそうになった。初恋の味は甘酸っぱいというけれど、こんなにも胸が苦しいものなのか。',
+        '部活の仲間たちと過ごした夏の日々、汗まみれになりながらも笑顔だった君の姿が今でも目に焼き付いている。体育祭での応援合戦、文化祭のクラス展示、合唱コンクールの練習、全てが特別な思い出になった。',
+        '放課後の教室で君を待っている時間が一番好きだった。夕日が差し込む窓際の席で、君の横顔を見ているだけで幸せだった。手紙を書こうと思ったけれど、君への気持ちを言葉にできない自分がもどかしくて。',
+        '屋上から見た景色と君の笑い声、夏祭りの花火と浴衣姿の君、修学旅行の夜に話した将来の夢、卒業式の日に流した涙、全てが青春という名の奇跡だった。友達以上恋人未満のもどかしい関係が続いて。',
+        '雨の日のバス停で傘を差し出してくれた君の優しさに、恋をした瞬間を今でも覚えている。君と歩いた通学路、一緒に立ち寄ったコンビニ、自転車を並べて走った帰り道、全てが特別な意味を持っていた。',
+        '音楽室で君のピアノを聴いていた時間、美術室での創作活動、化学実験での失敗、数学の問題より君の方が難しくて解けなかった。英語の授業中も君のことばかり考えて、先生に当てられて答えられなかった。',
+        '保健室で過ごした時間、図書委員として働く君の真面目な姿、窓際の席から見える景色よりも君の方が美しくて、授業に集中できない日々が続いた。君との会話が楽しすぎて、休み時間の短さが恨めしかった。',
+        '学園祭の準備で夜更かしした日々、クラスメイトとの何気ない会話、部室での秘密の話、放課後の特別な時間、夏休みの宿題よりも君への想いの方が複雑で解けなかった。制服を着た最後の日に思ったこと。',
+        '青空と白い雲を見上げながら君のことを考えていた。君がいた教室、君がいた季節、君との青春ストーリーが今でも心の中で続いている。あの時の気持ちのまま、時が止まっていればよかったのに。'
+    ];
     
-    function drawMatrix() {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    const fontSize = 12;
+    const columnWidth = 20;
+    const columns = Math.floor(canvas.width / columnWidth);
+    const drops = [];
+    
+    // Initialize drops with random stories and positions
+    for (let i = 0; i < columns; i++) {
+        drops[i] = {
+            y: Math.random() * canvas.height,
+            story: youthStories[Math.floor(Math.random() * youthStories.length)],
+            charIndex: Math.floor(Math.random() * 200),
+            speed: 0.5 + Math.random() * 1
+        };
+    }
+    
+    function drawYouthMatrix() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.03)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
-        ctx.fillStyle = '#0f0';
-        ctx.font = fontSize + 'px monospace';
+        ctx.fillStyle = '#4CAF50';
+        ctx.font = fontSize + 'px "Hiragino Sans", "Yu Gothic", monospace';
         
         for (let i = 0; i < drops.length; i++) {
-            const text = chars[Math.floor(Math.random() * chars.length)];
-            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            const drop = drops[i];
             
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                drops[i] = 0;
+            // Get character from story
+            const char = drop.story[drop.charIndex % drop.story.length] || '　';
+            
+            // Set opacity based on position
+            const opacity = Math.max(0.3, 1 - (drop.y / canvas.height) * 0.7);
+            ctx.fillStyle = `rgba(76, 175, 80, ${opacity})`;
+            
+            ctx.fillText(char, i * columnWidth, drop.y);
+            
+            // Move drop down
+            drop.y += drop.speed;
+            drop.charIndex++;
+            
+            // Reset drop when it goes off screen
+            if (drop.y > canvas.height + 50) {
+                drop.y = -50;
+                drop.story = youthStories[Math.floor(Math.random() * youthStories.length)];
+                drop.charIndex = Math.floor(Math.random() * 50);
+                drop.speed = 0.5 + Math.random() * 1;
             }
-            drops[i]++;
         }
     }
     
-    setInterval(drawMatrix, 50);
+    setInterval(drawYouthMatrix, 50);
 }
 
 // Color blobs with Santa Sunrise info
